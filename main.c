@@ -143,14 +143,60 @@ int second() {
     return 0;
 }
 
+//Если наибольший элемент матрицы А лежит выше главной диагонали,
+//найти сумму элементов матрицы, лежащих выше главной диагонали.
+//Иначе найти сумму элементов, лежащих ниже и на главной диагонали
+int third() {
+    int n = 5, a[n][n];
+    int maxElement = 0, maxElementI, maxElementJ;
+
+    srand(time(NULL));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            a[i][j] = rand() % 100;
+        }
+    }
+
+    //output matrix
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%7d", a[i][j]);
+        }
+        printf("\n");
+    }
+
+    //find max element
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (a[i][j] > maxElement) {
+                maxElement = a[i][j];
+                maxElementI = i;
+                maxElementJ = j;
+            }
+        }
+    }
+
+    //check the position of the max element
+    if (maxElementJ > maxElementI) {
+        //TODO Add functionality for finding the sum of matrix elements:
+        // above the main diagonal
+    } else {
+        //TODO Add functionality for finding the sum of matrix elements:
+        // below the main diagonal and on this diagonal
+    }
+
+}
+
 int main() {
     int choose = 0;
-    printf("1 / 2: ");
+    printf("1 / 2 / 3: ");
     scanf("%d", &choose);
     if (choose == 1) {
         first();
     } else if (choose == 2) {
         second();
+    } else if (choose == 3) {
+        third();
     } else {
         printf("Input Error");
     }
